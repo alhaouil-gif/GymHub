@@ -24,13 +24,16 @@ class WorkoutItemArrayAdapter(
         val tvDate = view.findViewById<TextView>(R.id.tvWorkoutDate)
         val tvNumEj = view.findViewById<TextView>(R.id.tvWorkoutNumEj)
         val tvDescription = view.findViewById<TextView>(R.id.tvWorkoutDescription)
+        val tvVideoInfo = view.findViewById<TextView?>(R.id.tvVideoInfo)
 
-        tvName.text = "Nombre: ${item.name}"
+        tvName.text = "🏋️ ${item.name}"
         tvLevel.text = "Nivel: ${item.level}"
-        tvEstimatedTime.text = "Tiempo estimado: ${item.estimatedTime}"
-        tvDate.text = "Fecha: ${item.date}"
+        tvEstimatedTime.text = "Tiempo estimado: ${item.estimatedTime.ifEmpty { "N/D" }}"
+        tvDate.text = "Fecha: ${item.date.ifEmpty { "N/D" }}"
         tvNumEj.text = "Nº Ejercicios: ${item.numEj}"
-        tvDescription.text = "Descripción: ${item.description}"
+        tvDescription.text = "Descripción: ${item.description ?: "Sin descripción"}"
+
+        tvVideoInfo?.text = if (item.videoExists) "🎬 Video disponible" else "Sin video"
 
         return view
     }

@@ -44,5 +44,13 @@
     <string name="historico">Historia</string>
     <string name="reproduccion">Reproducir</string>
 
+    <string-array name="levels_array">
+        <item>Todos</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+
 
 </resources>

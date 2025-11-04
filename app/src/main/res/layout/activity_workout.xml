@@ -23,8 +23,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Logo GymHub derecha superior -->
-
-        <!-- Título centrado entre los dos logos -->
         <ImageView
             android:id="@+id/imageViewLogo"
             android:layout_width="64dp"
@@ -37,6 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Título centrado entre los dos logos -->
         <TextView
             android:id="@+id/textViewTitleWorkout"
             android:layout_width="0dp"
@@ -64,27 +63,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Filtro por nivel -->
-        <EditText
-            android:id="@+id/editTextFilterLevel"
+        <Spinner
+            android:id="@+id/spinnerLevelFilter"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="@string/Search"
-            android:inputType="number"
             android:padding="8dp"
             app:layout_constraintTop_toBottomOf="@id/textViewUserLevel"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/buttonFilter"/>
+            app:layout_constraintEnd_toStartOf="@id/buttonFilter" />
+
 
         <Button
             android:id="@+id/buttonFilter"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:text="@string/filter"
-            app:layout_constraintTop_toTopOf="@id/editTextFilterLevel"
-            app:layout_constraintBottom_toBottomOf="@id/editTextFilterLevel"
+            app:layout_constraintTop_toTopOf="@id/spinnerLevelFilter"
+            app:layout_constraintBottom_toBottomOf="@id/spinnerLevelFilter"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <!-- Lista de workouts -->
@@ -96,7 +93,7 @@
             android:layout_marginBottom="8dp"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp"
-            app:layout_constraintTop_toBottomOf="@id/editTextFilterLevel"
+            app:layout_constraintTop_toBottomOf="@id/spinnerLevelFilter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/buttonProfile"/>

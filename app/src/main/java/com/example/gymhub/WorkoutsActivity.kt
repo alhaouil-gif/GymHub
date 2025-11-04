@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import com.example.gymhub.R.*
 import com.example.gymhub.model.WorkOutItem
 import com.example.gymhub.model.WorkoutHistoryArrayAdapter
@@ -16,8 +15,11 @@ class WorkoutsActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
     private lateinit var workoutListView: ListView
+    private lateinit var spinnerLevelFilter: Spinner
+    private lateinit var buttonFilter: Button
     private val workoutItemList = mutableListOf<WorkOutItem>()
     private val allWorkouts = mutableListOf<WorkOutItem>()
+    private val availableLevels = mutableListOf<Long>()
     private var adapter: WorkoutItemArrayAdapter? = null
     private var adapterHist: WorkoutHistoryArrayAdapter? = null
     private var showingHistorico = false
@@ -29,8 +31,9 @@ class WorkoutsActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
 
         workoutListView = findViewById(id.listViewWorkouts)
-        val editTextFilter: EditText = findViewById(id.editTextFilterLevel)
-        val buttonFilter: Button = findViewById(id.buttonFilter)
+        spinnerLevelFilter = findViewById(id.spinnerLevelFilter)
+        buttonFilter = findViewById(id.buttonFilter)
+
         val buttonProfile: Button = findViewById(id.buttonProfile)
         val buttonCoach: Button = findViewById(id.buttonCoach)
         val buttonHistorico: Button = findViewById(id.buttonHistorico)
@@ -43,13 +46,11 @@ class WorkoutsActivity : AppCompatActivity() {
 
         labelLevel.text = "Nivel: $userLevel"
 
-        // Mostrar u ocultar botones según el rol
         if (userAuthority == "Entrenador") {
             buttonHistorico.visibility = View.GONE
             buttonCoach.visibility = View.VISIBLE
             buttonWorkouts.visibility = View.GONE
-
-         } else {
+        } else {
             buttonHistorico.visibility = View.VISIBLE
             buttonCoach.visibility = View.GONE
             buttonWorkouts.isEnabled = true
@@ -58,24 +59,19 @@ class WorkoutsActivity : AppCompatActivity() {
         adapter = WorkoutItemArrayAdapter(this, layout.workout_item, workoutItemList)
         workoutListView.adapter = adapter
 
-        // Cargar los workouts base
         if (userAuthority == "Entrenador") {
             loadAllWorkouts()
         } else {
             loadWorkouts(userLevel)
         }
 
-        // --- Filtro exacto ---
-        buttonFilter.setOnClickListener {
-            applyExactFilter(editTextFilter.text.toString())
-        }
+        // --- Cargar niveles dinámicamente ---
+        loadAvailableLevels()
 
-        editTextFilter.addTextChangedListener {
-            if (it.isNullOrEmpty()) {
-                workoutItemList.clear()
-                workoutItemList.addAll(allWorkouts)
-                notifyCurrentAdapter()
-            }
+        // --- Filtro por nivel ---
+        buttonFilter.setOnClickListener {
+            val selected = spinnerLevelFilter.selectedItem?.toString()
+            applyLevelFilter(selected)
         }
 
         // --- Ir al perfil ---
@@ -88,14 +84,12 @@ class WorkoutsActivity : AppCompatActivity() {
             val intent = Intent(this, TrainerActivity::class.java)
             intent.putExtra("mode", "create")
             intent.putExtra("isTrainer", true)
-            intent.putExtra("hidePlayButton", true) // ⚡ ocultar btnPlay en TrainerActivity
+            intent.putExtra("hidePlayButton", true)
             startActivity(intent)
         }
 
         // --- Botón histórico ---
-        buttonHistorico.setOnClickListener {
-            loadHistorico()
-        }
+        buttonHistorico.setOnClickListener { loadHistorico() }
 
         // --- Botón Workouts (volver a lista normal) ---
         buttonWorkouts.setOnClickListener {
@@ -109,7 +103,7 @@ class WorkoutsActivity : AppCompatActivity() {
         // --- Botón volver ---
         buttonReturn.setOnClickListener { finish() }
 
-        // --- Click en workout o histórico ---
+        // --- Click en workout ---
         workoutListView.setOnItemClickListener { _, _, position, _ ->
             val selectedWorkout = workoutItemList[position]
             val intent = Intent(this, TrainerActivity::class.java)
@@ -135,29 +129,57 @@ class WorkoutsActivity : AppCompatActivity() {
         }
     }
 
-    private fun applyExactFilter(levelText: String) {
-        val filterLevel = levelText.toLongOrNull()
-        workoutItemList.clear()
+    // --- 🔹 Cargar niveles únicos desde Firestore ---
+    private fun loadAvailableLevels() {
+        firestore.collection("workouts")
+            .get()
+            .addOnSuccessListener { snapshot ->
+                availableLevels.clear()
+                val levelsSet = mutableSetOf<Long>()
 
-        if (levelText.isEmpty()) {
+                for (doc in snapshot.documents) {
+                    val level = doc.getLong("level")
+                    if (level != null) levelsSet.add(level)
+                }
+
+                val sortedLevels = levelsSet.sorted()
+                availableLevels.addAll(sortedLevels)
+
+                val levelOptions = mutableListOf("Todos")
+                levelOptions.addAll(sortedLevels.map { it.toString() })
+
+                val spinnerAdapter = ArrayAdapter(
+                    this,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    levelOptions
+                )
+                spinnerLevelFilter.adapter = spinnerAdapter
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error al cargar niveles", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun applyLevelFilter(selected: String?) {
+        if (selected == null || selected == "Todos") {
+            workoutItemList.clear()
             workoutItemList.addAll(allWorkouts)
-        } else if (filterLevel != null) {
-            workoutItemList.addAll(allWorkouts.filter { it.level == filterLevel })
         } else {
-            Toast.makeText(this, "Ingresa un nivel válido", Toast.LENGTH_SHORT).show()
+            val levelValue = selected.toLongOrNull()
+            workoutItemList.clear()
+            if (levelValue != null) {
+                workoutItemList.addAll(allWorkouts.filter { it.level == levelValue })
+            }
         }
-
         notifyCurrentAdapter()
     }
 
     private fun notifyCurrentAdapter() {
-        if (showingHistorico) {
-            adapterHist?.notifyDataSetChanged()
-        } else {
-            adapter?.notifyDataSetChanged()
-        }
+        if (showingHistorico) adapterHist?.notifyDataSetChanged()
+        else adapter?.notifyDataSetChanged()
     }
 
+    // --- Cargar workouts normales o del entrenador ---
     private fun loadWorkouts(maxLevel: Long) {
         firestore.collection("workouts")
             .get()
@@ -177,16 +199,8 @@ class WorkoutsActivity : AppCompatActivity() {
 
                     allWorkouts.add(
                         WorkOutItem(
-                            id = id,
-                            name = name,
-                            level = level,
-                            time = "",
-                            estimatedTime = estimatedTime,
-                            date = date,
-                            completionProgress = "",
-                            videoURL = video,
-                            numEj = numEj,
-                            description = description
+                            id, name, level, "", estimatedTime, date,
+                            "", video, numEj, description
                         )
                     )
                 }
@@ -219,16 +233,8 @@ class WorkoutsActivity : AppCompatActivity() {
 
                     allWorkouts.add(
                         WorkOutItem(
-                            id = id,
-                            name = name,
-                            level = level,
-                            time = "",
-                            estimatedTime = estimatedTime,
-                            date = date,
-                            completionProgress = "",
-                            videoURL = video,
-                            numEj = numEj,
-                            description = description
+                            id, name, level, "", estimatedTime, date,
+                            "", video, numEj, description
                         )
                     )
                 }
@@ -250,7 +256,6 @@ class WorkoutsActivity : AppCompatActivity() {
         }
 
         val userRef = firestore.collection("users").document(userId)
-
         firestore.collection("historicos")
             .whereEqualTo("userId", userRef)
             .get()
@@ -287,16 +292,9 @@ class WorkoutsActivity : AppCompatActivity() {
                             val description = workoutDoc.getString("description") ?: ""
 
                             val item = WorkOutItem(
-                                id = id,
-                                name = name,
-                                level = level,
-                                time = totalTime,
-                                estimatedTime = estimatedTime,
-                                date = doc.getString("date") ?: "",
-                                completionProgress = completion,
-                                videoURL = video,
-                                numEj = numEj,
-                                description = description
+                                id, name, level, totalTime, estimatedTime,
+                                doc.getString("date") ?: "", completion,
+                                video, numEj, description
                             )
 
                             allWorkouts.add(item)
