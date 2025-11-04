@@ -39,7 +39,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        // --- Inicializar vistas ---
+        //  Inicializar vistas
         editLogin = findViewById(R.id.texteditLogin)
         editMail = findViewById(R.id.texteditMail)
         editLevel = findViewById(R.id.texteditLevel)
@@ -50,10 +50,10 @@ class ProfileActivity : AppCompatActivity() {
         buttonSave = findViewById(R.id.buttonSave)
         buttonReturn = findViewById(R.id.buttonReturn)
 
-        // --- Cargar datos ---
+        //  Cargar datos
         loadProfileData()
 
-        // --- Configurar idiomas ---
+        //  Configurar idiomas
         val languages = listOf("Español", "Euskera")
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, languages)
         languageDropdown.setAdapter(adapter)
@@ -66,14 +66,14 @@ class ProfileActivity : AppCompatActivity() {
             selectedLangCode = if (position == 0) "es" else "eu"
         }
 
-        // --- Configurar tema ---
+        //  Configurar tema
         val isDarkMode = prefs.getBoolean("dark_mode", false)
         switchTheme.isChecked = isDarkMode
         AppCompatDelegate.setDefaultNightMode(
             if (isDarkMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
         )
 
-        // --- Botón Guardar ---
+        //  Botón Guardar
         buttonSave.setOnClickListener {
             saveProfileData()
             saveLanguage(selectedLangCode)
@@ -93,16 +93,16 @@ class ProfileActivity : AppCompatActivity() {
             recreate()
         }
 
-        // --- Botón Volver ---
+        //  Botón Volver
         buttonReturn.setOnClickListener { finish() }
     }
 
-    // --- Guardar idioma ---
+    //  Guardar idioma
     private fun saveLanguage(langCode: String) {
         prefs.edit().putString("My_Lang", langCode).apply()
     }
 
-    // --- Guardar tema ---
+    //  Guardar tema
     private fun saveTheme(isDarkMode: Boolean) {
         prefs.edit().putBoolean("dark_mode", isDarkMode).apply()
         AppCompatDelegate.setDefaultNightMode(
@@ -110,7 +110,7 @@ class ProfileActivity : AppCompatActivity() {
         )
     }
 
-    // --- Cargar idioma ---
+    //  Cargar idioma
     private fun loadLocale() {
         val lang = getSharedPreferences("Settings", MODE_PRIVATE).getString("My_Lang", "es") ?: "es"
         val locale = Locale(lang)
@@ -128,7 +128,7 @@ class ProfileActivity : AppCompatActivity() {
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
-    // --- Guardar localmente ---
+    //  Guardar localmente
     private fun saveProfileData() {
         prefs.edit().apply {
             putString("login", editLogin.text.toString())
@@ -142,7 +142,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    // --- Cargar localmente + Firestore ---
+    //  Cargar
     private fun loadProfileData() {
         val userLogin = SesionUsuario.userLogin ?: return
 
@@ -184,7 +184,7 @@ class ProfileActivity : AppCompatActivity() {
             }
     }
 
-    // --- 🔥 Actualizar Firestore ---
+    //  Actualizar Firestore
     private fun updateFirestoreProfile() {
         val userLogin = SesionUsuario.userLogin ?: return
 

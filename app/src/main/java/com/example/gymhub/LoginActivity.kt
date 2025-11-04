@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                         ) {
                             userFound = true
 
-                            // 🔹 Limpiar datos de sesión anteriores
+                            //  Limpiar datos de sesión anteriores
                             SesionUsuario.clearSession()
 
                             // Guardar datos actuales del usuario
@@ -70,28 +70,28 @@ class LoginActivity : AppCompatActivity() {
                             SesionUsuario.userLastName = document.getString("lastName")
                             SesionUsuario.userPassword = dbPassword
 
-                            // 🔹 Cargar idioma y tema (por defecto si no existen)
+                            //  Cargar idioma y tema (por defecto si no existen)
                             SesionUsuario.language = document.getString("language") ?: "es"
                             SesionUsuario.darkMode = document.getBoolean("dark_mode") ?: false
 
-                            // 🔹 Si no existen en Firestore, los crea
+                            //  Si no existen en Firestore, los crea
                             val updates = hashMapOf<String, Any>(
                                 "language" to SesionUsuario.language,
                                 "dark_mode" to SesionUsuario.darkMode
                             )
                             firestore.collection("users").document(document.id).update(updates)
 
-                            // 🔹 Aplicar idioma y tema
+                            //  Aplicar idioma y tema
                             applyUserPreferences()
 
                             Toast.makeText(this, "Login correcto", Toast.LENGTH_SHORT).show()
                             Log.d(TAG, "Usuario autenticado correctamente")
 
-                            // 🔹 Limpiar preferencias del usuario anterior
+                            //  Limpiar preferencias del usuario anterior
                             val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
                             prefs.edit().clear().apply()
 
-                            // 🔹 Guardar los datos del usuario actual
+                            //  Guardar los datos del usuario actual
                             prefs.edit().apply {
                                 putString("login", dbLogin)
                                 putString("mail", document.getString("mail"))
@@ -131,7 +131,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // ✅ Método para aplicar tema e idioma según el usuario
+    //  tema
     private fun applyUserPreferences() {
         // Idioma
         val langCode = SesionUsuario.language

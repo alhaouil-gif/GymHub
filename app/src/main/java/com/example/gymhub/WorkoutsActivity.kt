@@ -74,12 +74,12 @@ class WorkoutsActivity : AppCompatActivity() {
             applyLevelFilter(selected)
         }
 
-        // --- Ir al perfil ---
+        //  Ir al perfil
         buttonProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        // --- Botón entrenador ---
+        //  Botón entrenador
         buttonCoach.setOnClickListener {
             val intent = Intent(this, TrainerActivity::class.java)
             intent.putExtra("mode", "create")
@@ -91,7 +91,6 @@ class WorkoutsActivity : AppCompatActivity() {
         // --- Botón histórico ---
         buttonHistorico.setOnClickListener { loadHistorico() }
 
-        // --- Botón Workouts (volver a lista normal) ---
         buttonWorkouts.setOnClickListener {
             showingHistorico = false
             workoutListView.adapter = adapter
@@ -100,7 +99,6 @@ class WorkoutsActivity : AppCompatActivity() {
             adapter?.notifyDataSetChanged()
         }
 
-        // --- Botón volver ---
         buttonReturn.setOnClickListener { finish() }
 
         // --- Click en workout ---
