@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="workouts">Workouts</string>
+    <string name="entrenador">Entrenador</string>
+    <string name="reproducir">Historico</string>
+</resources>

@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema oscuro personalizado -->
+    <style name="Base.Theme.GymHub" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Color de fondo naranja suave -->
+        <item name="android:colorBackground">@color/soft_orange</item>
+
+        <!-- Opcional: ajustar colores principales -->
+        <item name="colorPrimary">@color/soft_orange</item>
+        <item name="colorSurface">@color/soft_orange</item>
+        <item name="colorOnBackground">@android:color/black</item>
+    </style>
+</resources>

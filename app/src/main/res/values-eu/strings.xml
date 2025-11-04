@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">GymHub</string>
+
+    <string name="name">Izena</string>
+    <string name="confirm_password">Pasahitza berretsi</string>
+    <string name="already_have_account">"Jada kontu bat daukazu?"</string>
+    <string name="dark_theme">Gauaren gaia</string>
+    <string name="language">Hizkuntza</string>
+    <string name="default_language">Lehenetsitako hizkuntza</string>
+    <string name="save">Gorde</string>
+    <string name="select_workout">Aukeratu Workout-a</string>
+    <string name="start">Hasi</string>
+
+    <string name="login_title">Saioa hasteko</string>
+    <string name="hint_user">Erabiltzailea</string>
+    <string name="hint_password">Pasahitza</string>
+    <string name="remember_me">Gogoratu ni</string>
+    <string name="login_button">Saioa hasi</string>
+    <string name="register_button">Erregistratu</string>
+    <string name="loginButton">Joan</string>
+    <string name="email">Posta elektronikoa</string>
+    <string name="register">Erregistroa</string>
+    <string name="last_name">Abizena</string>
+    <string name="birthday">Jaiotze data</string>
+    <string name="login">Login-a</string>
+    <string name="password">Pasahitza</string>
+    <string name="go_back">Itzuli</string>
+    <string name="perfil">Profila</string>
+    <string name="username">Izena</string>
+    <string name="nivel">Maila</string>
+    <string name="theme">Gaia</string>
+    <string name="role">Erabiltzaile mota</string>
+    <string name="volver">Itzuli</string>
+    <string name="Search">Bilatu</string>
+    <string name="workouts">Workouts</string>
+    <string name="entrenador">Entrenatzailea</string>
+    <string-array name="items">
+        <item>Bezeroa</item>
+        <item>Entrenatzailea</item>
+    </string-array>
+    <string name="save_success">Datuak ondo gorde dira</string>
+    <string name="save_error">Errorea datuak gordetzerakoan</string>
+    <string name="filter">Iragazi</string>
+    <string name="historico">Historikoa</string>
+    <string name="reproduccion">erreproduzitu</string>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewWorkoutName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Workout Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewWorkoutLevel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nivel: 0"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewWorkoutName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textViewWorkoutNumEj"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Número de ejercicios: 0"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewWorkoutLevel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textViewWorkoutVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Video URL"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewWorkoutNumEj"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/buttonPlayVideo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Reproducir Video"
+        app:layout_constraintTop_toBottomOf="@id/textViewWorkoutVideo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

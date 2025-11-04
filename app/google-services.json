@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "364027082281",
+    "project_id": "retogym-1faac",
+    "storage_bucket": "retogym-1faac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364027082281:android:1db2aa1b428954e0fc8e38",
+        "android_client_info": {
+          "package_name": "com.example.gymhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARSBHnAKfXeW0wfL9vFmOp5c5U_NKk4eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

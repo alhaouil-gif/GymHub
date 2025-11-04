@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutWorkout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".WorkoutsActivity">
+
+        <!-- Logo avatar izquierda superior -->
+        <ImageView
+            android:id="@+id/imageViewLogoWorkout"
+            android:layout_width="48dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Logo GymHub derecha superior -->
+
+        <!-- Título centrado entre los dos logos -->
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_gymhub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTitleWorkout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/workouts"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="28sp"
+            app:layout_constraintStart_toEndOf="@id/imageViewLogoWorkout"
+            app:layout_constraintEnd_toStartOf="@id/imageViewLogo"
+            app:layout_constraintTop_toTopOf="@id/imageViewLogoWorkout"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewLogoWorkout"
+            app:layout_constraintHorizontal_bias="0.5"/>
+
+        <!-- Nivel del usuario debajo del título -->
+        <TextView
+            android:id="@+id/textViewUserLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nivel: 0"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/imageViewLogoWorkout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Filtro por nivel -->
+        <EditText
+            android:id="@+id/editTextFilterLevel"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/Search"
+            android:inputType="number"
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewUserLevel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonFilter"/>
+
+        <Button
+            android:id="@+id/buttonFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="@string/filter"
+            app:layout_constraintTop_toTopOf="@id/editTextFilterLevel"
+            app:layout_constraintBottom_toBottomOf="@id/editTextFilterLevel"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Lista de workouts -->
+        <ListView
+            android:id="@+id/listViewWorkouts"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            app:layout_constraintTop_toBottomOf="@id/editTextFilterLevel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/buttonProfile"/>
+
+        <!-- Botones inferiores -->
+        <Button
+            android:id="@+id/buttonProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonCoach"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/buttonCoach"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/entrenador"
+            app:layout_constraintStart_toEndOf="@id/buttonProfile"
+            app:layout_constraintEnd_toStartOf="@id/buttonHistorico"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/buttonHistorico"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/historico"
+            app:layout_constraintStart_toEndOf="@id/buttonCoach"
+            app:layout_constraintEnd_toStartOf="@id/buttonWorkouts"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/buttonWorkouts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/workouts"
+            app:layout_constraintStart_toEndOf="@id/buttonHistorico"
+            app:layout_constraintEnd_toStartOf="@id/buttonReturn"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/buttonReturn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/volver"
+            app:layout_constraintStart_toEndOf="@id/buttonWorkouts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,91 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etWorkoutName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del workout"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/etWorkoutLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nivel"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etWorkoutNumEj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de ejercicios"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etWorkoutUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL del video"
+            android:inputType="textUri" />
+
+        <EditText
+            android:id="@+id/etWorkoutDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descripción"
+            android:inputType="textMultiLine"
+            android:minLines="3" />
+
+        <EditText
+            android:id="@+id/etWorkoutEstimatedTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tiempo estimado (minutos)"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etWorkoutDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha" />
+
+        <Button
+            android:id="@+id/btnPlayVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reproducir video" />
+
+        <Button
+            android:id="@+id/btnEjercicios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver ejercicios" />
+
+        <Button
+            android:id="@+id/btnSaveWorkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar" />
+
+        <Button
+            android:id="@+id/btnDeleteWorkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar" />
+
+        <Button
+            android:id="@+id/btnReturn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver" />
+
+    </LinearLayout>
+</ScrollView>

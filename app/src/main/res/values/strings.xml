@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">GymHub</string>
+
+    <string name="name">Nombre</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="already_have_account">"¿Ya tienes un cuenta ? "</string>
+    <string name="dark_theme">Tema oscuro</string>
+    <string name="language">Idioma</string>
+    <string name="default_language">Idioma por defecto</string>
+    <string name="save">Guardar</string>
+    <string name="select_workout">Selecciona el Workout</string>
+    <string name="start">Empezar</string>
+
+    <string name="login_title">Inicio de sesión</string>
+    <string name="hint_user">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="remember_me">Recordarme</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="register_button">Registrarse</string>
+    <string name="loginButton">Ir</string>
+    <string name="email" >Email</string>
+    <string name="register">Regístro</string>
+    <string name="last_name" >Apellidos</string>
+    <string name="birthday" >Fecha de nacimiento</string>
+    <string name="login" >Login</string>
+    <string name="password" >Contraseña</string>
+    <string name="go_back">Volver</string>
+    <string name="perfil">Perfil</string>
+    <string name="username">Nombre</string>
+    <string name="nivel">Nivel</string>
+    <string name="theme">Tema</string>
+    <string name="role">Tipo de usuario</string>
+    <string name="volver">Volver</string>
+    <string name="Search">Buscar</string>
+    <string name="workouts">Workouts</string>
+    <string name="entrenador">Entrenador</string>
+    <string-array name="items">
+        <item>Cliente</item>
+        <item>Entrenador</item>
+    </string-array>
+    <string name="save_success">Datos guardados correctamente</string>
+    <string name="save_error">Error al guardar los datos</string>
+    <string name="filter">Filtrar</string>
+    <string name="historico">Historia</string>
+    <string name="reproduccion">Reproducir</string>
+
+
+</resources>
