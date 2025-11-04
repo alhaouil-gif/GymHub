@@ -65,7 +65,7 @@ class WorkoutsActivity : AppCompatActivity() {
             loadWorkouts(userLevel)
         }
 
-        // --- Filtro exacto ---
+        //  Filtro exacto
         buttonFilter.setOnClickListener {
             applyExactFilter(editTextFilter.text.toString())
         }
@@ -78,12 +78,12 @@ class WorkoutsActivity : AppCompatActivity() {
             }
         }
 
-        // --- Ir al perfil ---
+        //  Ir al perfil
         buttonProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        // --- Botón entrenador ---
+        //  Botón entrenador
         buttonCoach.setOnClickListener {
             val intent = Intent(this, TrainerActivity::class.java)
             intent.putExtra("mode", "create")
@@ -92,12 +92,11 @@ class WorkoutsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // --- Botón histórico ---
+        //  Botón histórico
         buttonHistorico.setOnClickListener {
             loadHistorico()
         }
 
-        // --- Botón Workouts (volver a lista normal) ---
         buttonWorkouts.setOnClickListener {
             showingHistorico = false
             workoutListView.adapter = adapter
@@ -106,10 +105,8 @@ class WorkoutsActivity : AppCompatActivity() {
             adapter?.notifyDataSetChanged()
         }
 
-        // --- Botón volver ---
         buttonReturn.setOnClickListener { finish() }
 
-        // --- Click en workout o histórico ---
         workoutListView.setOnItemClickListener { _, _, position, _ ->
             val selectedWorkout = workoutItemList[position]
             val intent = Intent(this, TrainerActivity::class.java)

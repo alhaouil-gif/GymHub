@@ -13,7 +13,7 @@ object SesionUsuario {
     var userLogin: String? = null
     var userPassword: String? = null
 
-    //  Datos extra
+
     var userAuthority: String? = null
     var birthDate: String? = null
     var userLevel: Long = 0L

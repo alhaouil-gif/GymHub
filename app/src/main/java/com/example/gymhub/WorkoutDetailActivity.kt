@@ -22,7 +22,6 @@ class WorkoutDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_detail)
 
-        // --- Referencias a vistas ---
         textViewName = findViewById(R.id.textViewWorkoutName)
         textViewLevel = findViewById(R.id.textViewWorkoutLevel)
         textViewNumEj = findViewById(R.id.textViewWorkoutNumEj)
@@ -34,7 +33,6 @@ class WorkoutDetailActivity : AppCompatActivity() {
         val numEj = intent.getIntExtra("numEj", 0)
         val videoURL = intent.getStringExtra("videoURL") ?: ""
 
-        // --- Asignar valores a TextViews ---
         textViewName.text = workoutName
         textViewLevel.text = "Nivel: $level"
         textViewNumEj.text = "Número de ejercicios: $numEj"

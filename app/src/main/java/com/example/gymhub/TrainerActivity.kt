@@ -35,7 +35,7 @@ class TrainerActivity : AppCompatActivity() {
 
         firestore = FirebaseFirestore.getInstance()
 
-        // --- Referencias a vistas ---
+        //   Referencias a vistas
         etName = findViewById(R.id.etWorkoutName)
         etLevel = findViewById(R.id.etWorkoutLevel)
         etUrl = findViewById(R.id.etWorkoutUrl)
@@ -50,16 +50,16 @@ class TrainerActivity : AppCompatActivity() {
         val btnReturn: Button = findViewById(R.id.btnReturn)
         btnReturn.setOnClickListener { finish() }
 
-        // --- Recuperar datos del Intent ---
+        //   Recuperar datos del Intent
         workoutId = intent.getStringExtra("workoutId")
         isTrainer = intent.getBooleanExtra("isTrainer", false)
         mode = intent.getStringExtra("mode")
         val hidePlayButton = intent.getBooleanExtra("hidePlayButton", false)
 
-        // --- Ocultar btnPlay si corresponde ---
+        //  Ocultar btnPlay si corresponde
         if (hidePlayButton) btnPlay.visibility = View.GONE
 
-        // --- Rellenar campos con datos del Intent ---
+        //   Rellenar campos con datos del Intent
         etName.setText(intent.getStringExtra("workoutName") ?: "")
 
         val levelValue = intent.getLongExtra("level", 0)
@@ -73,7 +73,7 @@ class TrainerActivity : AppCompatActivity() {
         val numEjValue = intent.getIntExtra("numEj", 0)
         etNumEj.setText(if (numEjValue != 0) numEjValue.toString() else "")
 
-        // --- Mostrar/ocultar botones según rol ---
+        //  Mostrar/ocultar botones según rol
         if (isTrainer) {
             btnSave.visibility = View.VISIBLE
             btnDelete.visibility = if (mode == "edit") View.VISIBLE else View.GONE
@@ -81,7 +81,7 @@ class TrainerActivity : AppCompatActivity() {
             btnSave.visibility = View.GONE
             btnDelete.visibility = View.GONE
 
-            // --- Bloquear campos ---
+            //   Bloquear campos
             val editTexts = listOf(etName, etLevel, etUrl, etDescription, etEstimatedTime, etDate, etNumEj)
             for (et in editTexts) {
                 et.isFocusable = false
@@ -94,7 +94,7 @@ class TrainerActivity : AppCompatActivity() {
             }
         }
 
-        // --- Guardar cambios ---
+        //  Guardar cambios
         btnSave.setOnClickListener {
             val newName = etName.text.toString().trim()
             val newLevel = etLevel.text.toString().toLongOrNull() ?: 0
@@ -142,7 +142,7 @@ class TrainerActivity : AppCompatActivity() {
             }
         }
 
-        // --- Eliminar workout ---
+        //   Eliminar workout
         btnDelete.setOnClickListener {
             workoutId?.let {
                 firestore.collection("workouts").document(it)
@@ -157,7 +157,7 @@ class TrainerActivity : AppCompatActivity() {
             } ?: Toast.makeText(this, "No se encontró el workout para eliminar", Toast.LENGTH_SHORT).show()
         }
 
-        // --- Reproducir video ---
+        //   Reproducir video
         btnPlay.setOnClickListener {
             val url = etUrl.text.toString().trim()
 
@@ -187,7 +187,7 @@ class TrainerActivity : AppCompatActivity() {
             }
         }
 
-        // --- Mostrar ejercicios ---
+        //   Mostrar ejercicios
         btnEjercicios.setOnClickListener {
             Toast.makeText(this, "Mostrar ejercicios del workout (pendiente)", Toast.LENGTH_SHORT).show()
         }
