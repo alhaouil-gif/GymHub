@@ -12,8 +12,7 @@ class ExerciseItemAdapter(
     private val resource: Int,
     private val items: MutableList<ExerciseItem>,
     private val onEditClicked: (ExerciseItem) -> Unit,
-    private val onDeleteClicked: (ExerciseItem) -> Unit,
-    private val onSeriesClicked: (ExerciseItem) -> Unit
+    private val onDeleteClicked: (ExerciseItem) -> Unit
 ) : ArrayAdapter<ExerciseItem>(context, resource, items) {
 
     private val firestore = FirebaseFirestore.getInstance()
@@ -28,7 +27,7 @@ class ExerciseItemAdapter(
             view.tag = holder
         } else {
             view = convertView
-            holder = convertView.tag as ViewHolder
+            holder = view.tag as ViewHolder
         }
 
         val item = items[position]
@@ -44,38 +43,46 @@ class ExerciseItemAdapter(
         private val tvWorkout: TextView = view.findViewById(R.id.tvExerciseWorkout)
         private val btnEdit: Button = view.findViewById(R.id.buttonEditExercise)
         private val btnDelete: Button = view.findViewById(R.id.buttonDeleteExercise)
-        private val btnSeries: Button = view.findViewById(R.id.buttonSeries)
 
         fun bind(item: ExerciseItem) {
             tvName.text = item.name
             tvDescription.text = item.description ?: "Sin descripción"
             tvRest.text = "Descanso: ${item.rest} s"
-            tvWorkout.text = "Workout: Cargando..."
 
-            // 🔹 Cargar el nombre del workout desde Firestore
-            val workoutId = item.getWorkoutIdFromPath()
-            if (!workoutId.isNullOrEmpty()) {
-                firestore.collection("workouts").document(workoutId).get()
-                    .addOnSuccessListener { doc ->
-                        val workoutName = doc.getString("name") ?: workoutId
-                        tvWorkout.text = "Workout: $workoutName"
-                    }
-                    .addOnFailureListener {
-                        tvWorkout.text = "Workout: (error al cargar)"
-                    }
+            // 🧩 Si el ejercicio tiene guardado workoutName directamente, úsalo
+            if (item.workoutPath?.contains("/workouts/") == true) {
+                val workoutId = item.getWorkoutIdFromPath()
+                if (!workoutId.isNullOrEmpty()) {
+                    firestore.collection("workouts").document(workoutId).get()
+                        .addOnSuccessListener { doc ->
+                            val workoutName = doc.getString("workoutName")
+                            tvWorkout.text = if (!workoutName.isNullOrEmpty()) {
+                                "Workout: $workoutName"
+                            } else {
+                                "Workout: (sin nombre)"
+                            }
+                        }
+                        .addOnFailureListener {
+                            tvWorkout.text = "Workout: (error al cargar)"
+                        }
+                } else {
+                    tvWorkout.text = "Workout: (sin asignar)"
+                }
+            } else if (!item.workoutPath.isNullOrEmpty()) {
+                // En caso de que ya tengamos directamente el nombre guardado
+                tvWorkout.text = "Workout: ${item.workoutPath}"
             } else {
                 tvWorkout.text = "Workout: (sin asignar)"
             }
 
-            // 🔹 Controlar visibilidad de botones según rol
+            // 🔹 Mostrar/ocultar botones según el rol
             val isTrainer = SesionUsuario.userAuthority.equals("Entrenador", ignoreCase = true)
             btnEdit.visibility = if (isTrainer) View.VISIBLE else View.GONE
             btnDelete.visibility = if (isTrainer) View.VISIBLE else View.GONE
 
-            // 🔹 Asignar acciones
+            // 🔹 Acciones de los botones
             btnEdit.setOnClickListener { onEditClicked(item) }
             btnDelete.setOnClickListener { onDeleteClicked(item) }
-            btnSeries.setOnClickListener { onSeriesClicked(item) }
         }
     }
 }

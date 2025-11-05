@@ -4,8 +4,9 @@ data class ExerciseItem(
     var id: String = "",
     var name: String = "",
     var description: String? = null,
-    var rest: Long = 0L,
+    var rest: Int = 0,
     var workoutPath: String? = null,
+    val workoutName: String? = null,
     var createdBy: String? = null
 ) {
 

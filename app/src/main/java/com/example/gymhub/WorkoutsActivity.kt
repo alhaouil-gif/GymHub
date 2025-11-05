@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gymhub.R.*
 import com.example.gymhub.model.WorkOutItem
 import com.example.gymhub.model.WorkoutHistoryArrayAdapter
 import com.example.gymhub.model.WorkoutItemArrayAdapter
@@ -26,23 +25,23 @@ class WorkoutsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layout.activity_workout)
+        setContentView(R.layout.activity_workout) // ✅ nombre correcto del layout
 
         firestore = FirebaseFirestore.getInstance()
 
-        workoutListView = findViewById(id.listViewWorkouts)
-        spinnerLevelFilter = findViewById(id.spinnerLevelFilter)
-        buttonFilter = findViewById(id.buttonFilter)
+        workoutListView = findViewById(R.id.listViewWorkouts)
+        spinnerLevelFilter = findViewById(R.id.spinnerLevelFilter)
+        buttonFilter = findViewById(R.id.buttonFilter)
 
-        val buttonProfile: Button = findViewById(id.buttonProfile)
-        val buttonCoach: Button = findViewById(id.buttonCoach)
-        val buttonHistorico: Button = findViewById(id.buttonHistorico)
-        val buttonReturn: Button = findViewById(id.buttonReturn)
-        val buttonWorkouts: Button = findViewById(id.buttonWorkouts)
-        val labelLevel: TextView = findViewById(id.textViewUserLevel)
+        val buttonProfile: Button = findViewById(R.id.buttonProfile)
+        val buttonCoach: Button = findViewById(R.id.buttonCoach)
+        val buttonHistorico: Button = findViewById(R.id.buttonHistorico)
+        val buttonReturn: Button = findViewById(R.id.buttonReturn)
+        val buttonWorkouts: Button = findViewById(R.id.buttonWorkouts)
+        val labelLevel: TextView = findViewById(R.id.textViewUserLevel)
 
         val userLevel = SesionUsuario.userLevel
-        val userAuthority = SesionUsuario.userAuthority!!
+        val userAuthority = SesionUsuario.userAuthority ?: "Usuario"
 
         labelLevel.text = "Nivel: $userLevel"
 
@@ -56,7 +55,7 @@ class WorkoutsActivity : AppCompatActivity() {
             buttonWorkouts.isEnabled = true
         }
 
-        adapter = WorkoutItemArrayAdapter(this, layout.workout_item, workoutItemList)
+        adapter = WorkoutItemArrayAdapter(this, R.layout.workout_item, workoutItemList)
         workoutListView.adapter = adapter
 
         if (userAuthority == "Entrenador") {
@@ -65,21 +64,17 @@ class WorkoutsActivity : AppCompatActivity() {
             loadWorkouts(userLevel)
         }
 
-        // --- Cargar niveles dinámicamente ---
         loadAvailableLevels()
 
-        // --- Filtro por nivel ---
         buttonFilter.setOnClickListener {
             val selected = spinnerLevelFilter.selectedItem?.toString()
             applyLevelFilter(selected)
         }
 
-        //  Ir al perfil
         buttonProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        //  Botón entrenador
         buttonCoach.setOnClickListener {
             val intent = Intent(this, TrainerActivity::class.java)
             intent.putExtra("mode", "create")
@@ -88,7 +83,6 @@ class WorkoutsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // --- Botón histórico ---
         buttonHistorico.setOnClickListener { loadHistorico() }
 
         buttonWorkouts.setOnClickListener {
@@ -101,7 +95,6 @@ class WorkoutsActivity : AppCompatActivity() {
 
         buttonReturn.setOnClickListener { finish() }
 
-        // --- Click en workout ---
         workoutListView.setOnItemClickListener { _, _, position, _ ->
             val selectedWorkout = workoutItemList[position]
             val intent = Intent(this, TrainerActivity::class.java)
@@ -127,7 +120,6 @@ class WorkoutsActivity : AppCompatActivity() {
         }
     }
 
-    // --- 🔹 Cargar niveles únicos desde Firestore ---
     private fun loadAvailableLevels() {
         firestore.collection("workouts")
             .get()
@@ -177,7 +169,6 @@ class WorkoutsActivity : AppCompatActivity() {
         else adapter?.notifyDataSetChanged()
     }
 
-    // --- Cargar workouts normales o del entrenador ---
     private fun loadWorkouts(maxLevel: Long) {
         firestore.collection("workouts")
             .get()
