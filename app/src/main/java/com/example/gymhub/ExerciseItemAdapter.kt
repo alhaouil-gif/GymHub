@@ -30,9 +30,7 @@ class ExerciseItemAdapter(
             holder = view.tag as ViewHolder
         }
 
-        val item = items[position]
-        holder.bind(item)
-
+        holder.bind(items[position])
         return view
     }
 
@@ -49,38 +47,21 @@ class ExerciseItemAdapter(
             tvDescription.text = item.description ?: "Sin descripción"
             tvRest.text = "Descanso: ${item.rest} s"
 
-            // 🧩 Si el ejercicio tiene guardado workoutName directamente, úsalo
-            if (item.workoutPath?.contains("/workouts/") == true) {
-                val workoutId = item.getWorkoutIdFromPath()
-                if (!workoutId.isNullOrEmpty()) {
-                    firestore.collection("workouts").document(workoutId).get()
-                        .addOnSuccessListener { doc ->
-                            val workoutName = doc.getString("workoutName")
-                            tvWorkout.text = if (!workoutName.isNullOrEmpty()) {
-                                "Workout: $workoutName"
-                            } else {
-                                "Workout: (sin nombre)"
-                            }
-                        }
-                        .addOnFailureListener {
-                            tvWorkout.text = "Workout: (error al cargar)"
-                        }
-                } else {
-                    tvWorkout.text = "Workout: (sin asignar)"
+            // 🔹 Usamos la referencia DocumentReference directamente
+            item.workoutRef?.get()
+                ?.addOnSuccessListener { doc ->
+                    tvWorkout.text = "Workout: ${doc.getString("name") ?: "(sin nombre)"}"
                 }
-            } else if (!item.workoutPath.isNullOrEmpty()) {
-                // En caso de que ya tengamos directamente el nombre guardado
-                tvWorkout.text = "Workout: ${item.workoutPath}"
-            } else {
+                ?.addOnFailureListener {
+                    tvWorkout.text = "Workout: (error al cargar)"
+                } ?: run {
                 tvWorkout.text = "Workout: (sin asignar)"
             }
 
-            // 🔹 Mostrar/ocultar botones según el rol
             val isTrainer = SesionUsuario.userAuthority.equals("Entrenador", ignoreCase = true)
             btnEdit.visibility = if (isTrainer) View.VISIBLE else View.GONE
             btnDelete.visibility = if (isTrainer) View.VISIBLE else View.GONE
 
-            // 🔹 Acciones de los botones
             btnEdit.setOnClickListener { onEditClicked(item) }
             btnDelete.setOnClickListener { onDeleteClicked(item) }
         }

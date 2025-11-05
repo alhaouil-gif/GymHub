@@ -98,7 +98,7 @@ class TrainerActivity : AppCompatActivity() {
 
             // Mantiene sesión activa y pasa workout al siguiente Activity
             val intent = Intent(this, ExerciseActivity::class.java)
-            intent.putExtra("workoutName", selectedWorkoutName)
+            intent.putExtra("workoutId", workoutId)
             startActivity(intent)
         }
     }

@@ -1,6 +1,7 @@
 package com.example.gymhub
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,8 @@ class ExerciseActivity : AppCompatActivity() {
     private lateinit var adapter: ExerciseItemAdapter
     private lateinit var exercises: MutableList<ExerciseItem>
     private lateinit var btnAddExercise: Button
-    private var workoutName: String? = null
+    private lateinit var btnBack: Button
+    private var workoutId: String? = null
     private var isTrainer: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,39 +23,49 @@ class ExerciseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_exercise)
 
         firestore = FirebaseFirestore.getInstance()
-        listView = findViewById(R.id.listViewExercises) // 🔹 Corrige ID al de tu XML
-        btnAddExercise = findViewById(R.id.buttonAddExercise) // 🔹 Corrige ID al de tu XML
+        listView = findViewById(R.id.listViewExercises)
+        btnAddExercise = findViewById(R.id.buttonAddExercise)
+        btnBack = findViewById(R.id.buttonReturnExercise)
 
-        // Recuperar datos del intent
-        workoutName = intent.getStringExtra("workoutName")
+        // Recuperar workoutId del intent
+        workoutId = intent.getStringExtra("workoutId")
+        Log.d("ExerciseActivity", "workoutId recibido: $workoutId")
+
+
         isTrainer = SesionUsuario.userAuthority.equals("Entrenador", ignoreCase = true)
 
         exercises = mutableListOf()
-
         adapter = ExerciseItemAdapter(
             this,
             R.layout.exercise_item,
             exercises,
-            onEditClicked = { exercise -> editExercise(exercise) },
-            onDeleteClicked = { exercise -> deleteExercise(exercise) }
+            onEditClicked = { editExercise(it) },
+            onDeleteClicked = { deleteExercise(it) }
         )
         listView.adapter = adapter
 
-        // Mostrar/ocultar botón de añadir según el rol
+        // Mostrar/ocultar botón de añadir según rol
         btnAddExercise.visibility = if (isTrainer) View.VISIBLE else View.GONE
         btnAddExercise.setOnClickListener {
             Toast.makeText(this, "Función de añadir pendiente", Toast.LENGTH_SHORT).show()
         }
 
-        // Cargar ejercicios desde Firestore
+        // Botón volver funcional
+        btnBack.setOnClickListener { finish() }
+
+        // Cargar ejercicios
         loadExercises()
     }
 
     private fun loadExercises() {
-        val name = workoutName ?: return
+        val id = workoutId ?: return
 
+        // Obtener la referencia del workout
+        val workoutRef = firestore.collection("workouts").document(id)
+
+        // Filtrar ejercicios por la referencia
         firestore.collection("exercises")
-            .whereEqualTo("workoutName", name)
+            .whereEqualTo("workoutId", workoutRef)
             .get()
             .addOnSuccessListener { result ->
                 exercises.clear()
@@ -63,7 +75,7 @@ class ExerciseActivity : AppCompatActivity() {
                         name = doc.getString("name") ?: "(sin nombre)",
                         description = doc.getString("description"),
                         rest = (doc.getLong("rest") ?: 0L).toInt(),
-                        workoutPath = doc.getString("workoutName") ?: ""
+                        workoutRef = doc.getDocumentReference("workoutId") // 🔹 guardamos la referencia
                     )
                     exercises.add(exercise)
                 }
@@ -80,7 +92,6 @@ class ExerciseActivity : AppCompatActivity() {
     }
 
     private fun editExercise(exercise: ExerciseItem) {
-        // 🔹 Ya no intentamos abrir otra Activity
         Toast.makeText(this, "Función de editar pendiente", Toast.LENGTH_SHORT).show()
     }
 
