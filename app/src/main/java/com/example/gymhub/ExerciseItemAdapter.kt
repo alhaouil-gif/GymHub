@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.TextView
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ExerciseItemAdapter(
@@ -12,7 +14,8 @@ class ExerciseItemAdapter(
     private val resource: Int,
     private val items: MutableList<ExerciseItem>,
     private val onEditClicked: (ExerciseItem) -> Unit,
-    private val onDeleteClicked: (ExerciseItem) -> Unit
+    private val onDeleteClicked: (ExerciseItem) -> Unit,
+    private val onSeriesClicked: (ExerciseItem) -> Unit
 ) : ArrayAdapter<ExerciseItem>(context, resource, items) {
 
     private val firestore = FirebaseFirestore.getInstance()
@@ -41,13 +44,14 @@ class ExerciseItemAdapter(
         private val tvWorkout: TextView = view.findViewById(R.id.tvExerciseWorkout)
         private val btnEdit: Button = view.findViewById(R.id.buttonEditExercise)
         private val btnDelete: Button = view.findViewById(R.id.buttonDeleteExercise)
+        private val btnSeries: Button = view.findViewById(R.id.buttonSeries)
 
         fun bind(item: ExerciseItem) {
             tvName.text = item.name
             tvDescription.text = item.description ?: "Sin descripción"
             tvRest.text = "Descanso: ${item.rest} s"
 
-            // 🔹 Usamos la referencia DocumentReference directamente
+            // 🔹 Mostrar nombre del workout desde la referencia
             item.workoutRef?.get()
                 ?.addOnSuccessListener { doc ->
                     tvWorkout.text = "Workout: ${doc.getString("name") ?: "(sin nombre)"}"
@@ -64,6 +68,7 @@ class ExerciseItemAdapter(
 
             btnEdit.setOnClickListener { onEditClicked(item) }
             btnDelete.setOnClickListener { onDeleteClicked(item) }
+            btnSeries.setOnClickListener { onSeriesClicked(item) }
         }
     }
 }

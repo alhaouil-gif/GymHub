@@ -2,12 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@android:color/white"
-    tools:context=".ExerciseActivity">
+    android:background="@android:color/white">
 
     <!-- 🔹 Título -->
     <TextView
@@ -33,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 🔹 Botón de añadir (solo visible si es entrenador) -->
+    <!-- 🔹 Botón de añadir ejercicio (solo visible si es entrenador) -->
     <Button
         android:id="@+id/buttonAddExercise"
         android:layout_width="wrap_content"

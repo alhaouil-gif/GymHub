@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:layout_marginBottom="8dp">
 
@@ -13,57 +11,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nombre del ejercicio"
-        android:textStyle="bold"
         android:textSize="18sp"
-        android:textColor="@android:color/black"/>
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvExerciseDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Descripción"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"
-        android:paddingTop="4dp"/>
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tvExerciseRest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Descanso: 0 s"
-        android:textSize="14sp"
-        android:paddingTop="4dp"/>
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tvExerciseWorkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Workout: -"
-        android:textSize="14sp"
-        android:paddingTop="4dp"/>
+        android:text="Workout: (sin asignar)"
+        android:textSize="14sp"/>
 
+    <!-- 🔹 Botones de acción -->
     <LinearLayout
-        android:id="@+id/layoutButtonsExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
         android:paddingTop="8dp">
 
-        <!-- Botón visible para todos -->
-        <Button
-            android:id="@+id/buttonSeries"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Series" />
-
-        <!-- Botones solo visibles para entrenadores (se controlará desde el adaptador) -->
         <Button
             android:id="@+id/buttonEditExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Editar"
-            android:layout_marginStart="8dp"
             android:visibility="gone"/>
 
         <Button
@@ -73,6 +57,12 @@
             android:text="Eliminar"
             android:layout_marginStart="8dp"
             android:visibility="gone"/>
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/buttonSeries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Series"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
 </LinearLayout>

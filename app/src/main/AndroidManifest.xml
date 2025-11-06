@@ -30,6 +30,8 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".WorkoutDetailActivity" />
         <activity android:name=".ExerciseActivity" />
+        <activity android:name=".SeriesActivity" />
+
 
         <activity android:name=".TrainerActivity" />
 

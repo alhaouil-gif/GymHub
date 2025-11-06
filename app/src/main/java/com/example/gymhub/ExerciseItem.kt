@@ -7,5 +7,6 @@ data class ExerciseItem(
     var name: String = "",
     var description: String? = null,
     var rest: Int = 0,
-    var workoutRef: DocumentReference? = null // ⚠️ ahora es referencia
+    var workoutRef: DocumentReference? = null, // referencia al workout en Firestore
+    var workoutName: String? = null            // nombre del workout para mostrar en UI
 )
