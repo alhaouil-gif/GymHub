@@ -61,7 +61,8 @@ class ExerciseActivity : AppCompatActivity() {
         val id = workoutId ?: return
 
         // Obtener la referencia del workout
-        val workoutRef = firestore.collection("workouts").document(id)
+        val workoutRef = firestore.collection("workouts").document(workoutId!!)
+       
 
         // Filtrar ejercicios por la referencia
         firestore.collection("exercises")

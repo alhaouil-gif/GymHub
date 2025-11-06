@@ -91,10 +91,11 @@ class TrainerActivity : AppCompatActivity() {
         btnEjercicios.setOnClickListener {
             val selectedWorkoutName = etName.text.toString().trim()
 
-            if (selectedWorkoutName.isEmpty()) {
-                Toast.makeText(this, "El workout no tiene nombre", Toast.LENGTH_SHORT).show()
+            if (workoutId.isNullOrEmpty()) {
+                Toast.makeText(this, "El workout no tiene ID", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
 
             // Mantiene sesión activa y pasa workout al siguiente Activity
             val intent = Intent(this, ExerciseActivity::class.java)
