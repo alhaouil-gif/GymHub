@@ -43,8 +43,54 @@
     <string name="filter">Filtrar</string>
     <string name="historico">Historia</string>
     <string name="reproduccion">Reproducir</string>
-
-    <string-array name="levels_array">
+    <string name="nombre_del_workout">Nombre del workout</string>
+    <string name="nivel3">Nivel</string>
+    <string name="n_mero_de_ejercicios">Número de ejercicios</string>
+    <string name="url_del_video">URL del video</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="tiempo_estimado_minutos">Tiempo estimado (minutos)</string>
+    <string name="fecha">Fecha</string>
+    <string name="reproducir_video">Reproducir video</string>
+    <string name="ver_ejercicios">Ver ejercicios</string>
+    <string name="guardar">Guardar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="volver3">Volver</string>
+    <string name="ejercicios">Ejercicios</string>
+    <string name="a_adir_ejercicio">Añadir ejercicio</string>
+    <string name="volver4">Volver</string>
+    <string name="series_del_ejercicio">Series del ejercicio</string>
+    <string name="a_adir_serie">Añadir serie</string>
+    <string name="volver5">Volver</string>
+    <string name="nombre_del_ejercicio">Nombre del ejercicio</string>
+    <string name="descripci_n2">Descripción</string>
+    <string name="descanso_segundos">Descanso (segundos)</string>
+    <string name="nombre_de_la_serie">Nombre de la serie</string>
+    <string name="ej_serie_1">Ej: Serie 1</string>
+    <string name="repeticiones">Repeticiones</string>
+    <string name="ej_10">Ej: 10</string>
+    <string name="tiempo_segundos">Tiempo (segundos)</string>
+    <string name="ej_60">Ej: 60</string>
+    <string name="asignar_ejercicio">Asignar ejercicio</string>
+    <string name="nombre_del_ejercicio2">Nombre del ejercicio</string>
+    <string name="descripci_n3">Descripción</string>
+    <string name="descanso_0_s">Descanso: 0 s</string>
+    <string name="workout_sin_asignar">Workout: (sin asignar)</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar2">Eliminar</string>
+    <string name="series3">Series</string>
+    <string name="serie4">Serie</string>
+    <string name="reps_03">Reps: 0</string>
+    <string name="tiempo_0_s">Tiempo: 0 s</string>
+    <string name="editar2">Editar</string>
+    <string name="eliminar4">Eliminar</string>
+    <string name="n_mero_de_ejercicios_0">Número de ejercicios: 0</string>
+    <string name="video_url">Video URL</string>
+    <string name="reproducir_video2">Reproducir Video</string>
+    <string name="nivel_07">Nivel: 0</string>
+    <string name="acceder">Acceder</string>
+    <string name="nivel_0">Nivel: 0</string>
+    <string name="workout_name">Workout Name</string>
+     <string-array name="levels_array">
         <item>Todos</item>
         <item>1</item>
         <item>2</item>

@@ -12,7 +12,7 @@
         android:id="@+id/tvExerciseTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Ejercicios"
+        android:text="@string/ejercicios"
         android:textStyle="bold"
         android:textSize="26sp"
         android:textColor="@android:color/black"
@@ -36,7 +36,7 @@
         android:id="@+id/buttonAddExercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Añadir ejercicio"
+        android:text="@string/a_adir_ejercicio"
         android:layout_marginTop="12dp"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/spinnerWorkoutSelector"
@@ -61,7 +61,7 @@
         android:id="@+id/buttonReturnExercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver"
+        android:text="@string/volver4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

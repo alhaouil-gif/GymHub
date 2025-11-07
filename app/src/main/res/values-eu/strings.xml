@@ -3,26 +3,26 @@
 
     <string name="name">Izena</string>
     <string name="confirm_password">Pasahitza berretsi</string>
-    <string name="already_have_account">"Jada kontu bat daukazu?"</string>
-    <string name="dark_theme">Gauaren gaia</string>
+    <string name="already_have_account">"Kontua baduzu jada?"</string>
+    <string name="dark_theme">Gai iluna</string>
     <string name="language">Hizkuntza</string>
-    <string name="default_language">Lehenetsitako hizkuntza</string>
+    <string name="default_language">Hizkuntza lehenetsia</string>
     <string name="save">Gorde</string>
-    <string name="select_workout">Aukeratu Workout-a</string>
+    <string name="select_workout">Aukeratu workout-a</string>
     <string name="start">Hasi</string>
 
-    <string name="login_title">Saioa hasteko</string>
+    <string name="login_title">Saioa hasi</string>
     <string name="hint_user">Erabiltzailea</string>
     <string name="hint_password">Pasahitza</string>
-    <string name="remember_me">Gogoratu ni</string>
+    <string name="remember_me">Gogoratu</string>
     <string name="login_button">Saioa hasi</string>
     <string name="register_button">Erregistratu</string>
     <string name="loginButton">Joan</string>
-    <string name="email">Posta elektronikoa</string>
+    <string name="email">Emaila</string>
     <string name="register">Erregistroa</string>
-    <string name="last_name">Abizena</string>
+    <string name="last_name">Abizenak</string>
     <string name="birthday">Jaiotze data</string>
-    <string name="login">Login-a</string>
+    <string name="login">Login</string>
     <string name="password">Pasahitza</string>
     <string name="go_back">Itzuli</string>
     <string name="perfil">Profila</string>
@@ -32,15 +32,69 @@
     <string name="role">Erabiltzaile mota</string>
     <string name="volver">Itzuli</string>
     <string name="Search">Bilatu</string>
-    <string name="workouts">Workouts</string>
+    <string name="workouts">Workout-ak</string>
     <string name="entrenador">Entrenatzailea</string>
     <string-array name="items">
         <item>Bezeroa</item>
         <item>Entrenatzailea</item>
     </string-array>
     <string name="save_success">Datuak ondo gorde dira</string>
-    <string name="save_error">Errorea datuak gordetzerakoan</string>
+    <string name="save_error">Errorea datuak gordetzean</string>
     <string name="filter">Iragazi</string>
-    <string name="historico">Historikoa</string>
-    <string name="reproduccion">erreproduzitu</string>
+    <string name="historico">Historia</string>
+    <string name="reproduccion">Erreproduzitu</string>
+    <string name="nombre_del_workout">Workout-aren izena</string>
+    <string name="nivel3">Maila</string>
+    <string name="n_mero_de_ejercicios">Ariketa kopurua</string>
+    <string name="url_del_video">Bideoaren URLa</string>
+    <string name="descripci_n">Deskribapena</string>
+    <string name="tiempo_estimado_minutos">Denbora estimatua (minutuak)</string>
+    <string name="fecha">Data</string>
+    <string name="reproducir_video">Bideoa erreproduzitu</string>
+    <string name="ver_ejercicios">Ariketak ikusi</string>
+    <string name="guardar">Gorde</string>
+    <string name="eliminar">Ezabatu</string>
+    <string name="volver3">Itzuli</string>
+    <string name="ejercicios">Ariketak</string>
+    <string name="a_adir_ejercicio">Ariketa gehitu</string>
+    <string name="volver4">Itzuli</string>
+    <string name="series_del_ejercicio">Ariketaren serieak</string>
+    <string name="a_adir_serie">Serie gehitu</string>
+    <string name="volver5">Itzuli</string>
+    <string name="nombre_del_ejercicio">Ariketaren izena</string>
+    <string name="descripci_n2">Deskribapena</string>
+    <string name="descanso_segundos">Atsedena (segundoak)</string>
+    <string name="nombre_de_la_serie">Seriearen izena</string>
+    <string name="ej_serie_1">Adib.: Serie 1</string>
+    <string name="repeticiones">Errepikapenak</string>
+    <string name="ej_10">Adib.: 10</string>
+    <string name="tiempo_segundos">Denbora (segundoak)</string>
+    <string name="ej_60">Adib.: 60</string>
+    <string name="asignar_ejercicio">Ariketa esleitu</string>
+    <string name="nombre_del_ejercicio2">Ariketaren izena</string>
+    <string name="descripci_n3">Deskribapena</string>
+    <string name="descanso_0_s">Atsedena: 0 s</string>
+    <string name="workout_sin_asignar">Workout: (esleitu gabe)</string>
+    <string name="editar">Editatu</string>
+    <string name="eliminar2">Ezabatu</string>
+    <string name="series3">Serieak</string>
+    <string name="serie4">Serie</string>
+    <string name="reps_03">Errepikapenak: 0</string>
+    <string name="tiempo_0_s">Denbora: 0 s</string>
+    <string name="editar2">Editatu</string>
+    <string name="eliminar4">Ezabatu</string>
+    <string name="n_mero_de_ejercicios_0">Ariketa kopurua: 0</string>
+    <string name="video_url">Bideoaren URLa</string>
+    <string name="reproducir_video2">Bideoa erreproduzitu</string>
+    <string name="nivel_07">Maila: 0</string>
+    <string name="acceder">Sartu</string>
+    <string name="nivel_0">Maila: 0</string>
+    <string name="workout_name">Workout izena</string>
+
+    <string-array name="levels_array">
+        <item>Guztiak</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>

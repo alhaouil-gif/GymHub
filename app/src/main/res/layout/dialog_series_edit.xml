@@ -11,49 +11,49 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre de la serie"
+            android:text="@string/nombre_de_la_serie"
             android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/etSeriesName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej: Serie 1"
+            android:hint="@string/ej_serie_1"
             android:inputType="text"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Repeticiones"
+            android:text="@string/repeticiones"
             android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/etSeriesReps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej: 10"
+            android:hint="@string/ej_10"
             android:inputType="number"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Tiempo (segundos)"
+            android:text="@string/tiempo_segundos"
             android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/etSeriesDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej: 60"
+            android:hint="@string/ej_60"
             android:inputType="number"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Asignar ejercicio"
+            android:text="@string/asignar_ejercicio"
             android:textStyle="bold"/>
 
         <Spinner

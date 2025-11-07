@@ -8,7 +8,7 @@
         android:id="@+id/tvSeriesName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Serie"
+        android:text="@string/serie4"
         android:textSize="16sp"
         android:textStyle="bold"/>
 
@@ -16,13 +16,13 @@
         android:id="@+id/tvSeriesReps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reps: 0"/>
+        android:text="@string/reps_03"/>
 
     <TextView
         android:id="@+id/tvSeriesDuration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tiempo: 0 s"/>
+        android:text="@string/tiempo_0_s"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,14 +34,14 @@
             android:id="@+id/buttonEditSeries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Editar"
+            android:text="@string/editar2"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/buttonDeleteSeries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eliminar"
+            android:text="@string/eliminar4"
             android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

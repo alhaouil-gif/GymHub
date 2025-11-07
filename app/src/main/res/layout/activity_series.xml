@@ -10,7 +10,7 @@
         android:id="@+id/tvSeriesTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Series del ejercicio"
+        android:text="@string/series_del_ejercicio"
         android:textStyle="bold"
         android:textSize="22sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
         android:id="@+id/buttonAddSeries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Añadir serie"
+        android:text="@string/a_adir_serie"
         android:layout_marginTop="12dp"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/tvSeriesTitle"
@@ -43,7 +43,7 @@
         android:id="@+id/buttonReturnSeries"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver"
+        android:text="@string/volver5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

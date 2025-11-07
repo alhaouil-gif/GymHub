@@ -55,7 +55,7 @@
             android:id="@+id/textViewUserLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nivel: 0"
+            android:text="@string/nivel_07"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:layout_marginTop="8dp"

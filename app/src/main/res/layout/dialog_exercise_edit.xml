@@ -12,20 +12,20 @@
             android:id="@+id/etExerciseName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del ejercicio"/>
+            android:hint="@string/nombre_del_ejercicio"/>
 
         <EditText
             android:id="@+id/etExerciseDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descripción"/>
+            android:hint="@string/descripci_n2"/>
 
 
         <EditText
             android:id="@+id/etExerciseRest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descanso (segundos)"
+            android:hint="@string/descanso_segundos"
             android:inputType="number"/>
 
         <Spinner

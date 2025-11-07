@@ -10,7 +10,7 @@
         android:id="@+id/tvExerciseName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre del ejercicio"
+        android:text="@string/nombre_del_ejercicio2"
         android:textSize="18sp"
         android:textStyle="bold"/>
 
@@ -18,21 +18,21 @@
         android:id="@+id/tvExerciseDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descripción"
+        android:text="@string/descripci_n3"
         android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tvExerciseRest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descanso: 0 s"
+        android:text="@string/descanso_0_s"
         android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/tvExerciseWorkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Workout: (sin asignar)"
+        android:text="@string/workout_sin_asignar"
         android:textSize="14sp"/>
 
     <!-- 🔹 Botones de acción -->
@@ -47,14 +47,14 @@
             android:id="@+id/buttonEditExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Editar"
+            android:text="@string/editar"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/buttonDeleteExercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eliminar"
+            android:text="@string/eliminar2"
             android:layout_marginStart="8dp"
             android:visibility="gone"/>
 
@@ -62,7 +62,7 @@
             android:id="@+id/buttonSeries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Series"
+            android:text="@string/series3"
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 </LinearLayout>
